@@ -1,0 +1,24 @@
+{
+    "name": "jhernandes/person",
+    "description": "Person Domain",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jhernandes\\Person\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joao Hernandes",
+            "email": "jhernandes@isoftsolutions.com.br"
+        }
+    ],
+    "require": {
+        "php-ds/php-ds": "^1.4",
+        "jhernandes/contacts": "^1.0"
+    }
+}
