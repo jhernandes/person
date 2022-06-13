@@ -33,8 +33,8 @@ class PersonTest extends TestCase
         $person->setHomePhone('1132321000');
 
         $this->assertSame('jose@mail.me', $person->jsonSerialize()['email']);
-        $this->assertSame('11990909090', $person->jsonSerialize()['contacts']['mobilePhone']);
-        $this->assertSame('1132321000', $person->jsonSerialize()['contacts']['homePhone']);
+        $this->assertSame('(11) 99090-9090', $person->jsonSerialize()['contacts']['mobilePhone']);
+        $this->assertSame('(11) 3232-1000', $person->jsonSerialize()['contacts']['homePhone']);
     }
 
     public function testCanBeCreatedAndAddedAddress(): void
