@@ -12,7 +12,7 @@ class PersonTest extends TestCase
 {
     public function testCanBeCreatedWithValidNameAndCpf(): void
     {
-        $this->assertInstanceOf(Person::class, new Person(
+        $this->assertInstanceOf(Person::class, Person::fromString(
             'João Silva',
             '79999338801'
         ));
@@ -20,14 +20,14 @@ class PersonTest extends TestCase
 
     public function testCanBeCreatedAndReturnArray(): void
     {
-        $person = new Person('José Freire', '79999338801');
+        $person = Person::fromString('José Freire', '79999338801');
 
         $this->assertEquals('José Freire', $person->jsonSerialize()['name']);
     }
 
     public function testCanBeCreatedAndAddedContacts(): void
     {
-        $person = new Person('José Freire', '79999338801');
+        $person = Person::fromString('José Freire', '79999338801');
         $person->setEmail('jose@mail.me');
         $person->setMobilePhone('11990909090');
         $person->setHomePhone('1132321000');
@@ -39,7 +39,7 @@ class PersonTest extends TestCase
 
     public function testCanBeCreatedAndAddedAddress(): void
     {
-        $person = new Person('José Freire', '79999338801');
+        $person = Person::fromString('José Freire', '79999338801');
         $person->setAddress(Address::fromString('Rua Teste, 100, Bairro Teste,, Sao Paulo, SP, 01156060'));
 
         $this->assertNotEmpty($person->jsonSerialize()['address']);
@@ -55,7 +55,7 @@ class PersonTest extends TestCase
     public function testCanBeCreatedAndAddedBirthdate(): void
     {
         $birthdate = '1988-10-03';
-        $person = new Person('José Freire', '79999338801');
+        $person = Person::fromString('José Freire', '79999338801');
         $person->setBirthdate($birthdate);
 
         $this->assertSame($birthdate, $person->jsonSerialize()['birthdate']);
@@ -65,13 +65,13 @@ class PersonTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        new Person('José Freire', '');
+        Person::fromString('José Freire', '');
     }
 
     public function testCannotBeCreatedWithoutValidName(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        new Person('Jones', '79999338801');
+        Person::fromString('Jones', '79999338801');
     }
 }

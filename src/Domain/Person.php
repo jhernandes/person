@@ -25,6 +25,11 @@ class Person implements \JsonSerializable
         $this->cpf = CPF::fromString($cpf);
     }
 
+    public static function fromString(string $name, string $cpf): self
+    {
+        return new self($name, $cpf);
+    }
+
     public function setBirthdate(string $birthdate): void
     {
         $this->birthdate = Date::fromString($birthdate);
