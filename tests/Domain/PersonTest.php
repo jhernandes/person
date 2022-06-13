@@ -40,7 +40,7 @@ class PersonTest extends TestCase
     public function testCanBeCreatedAndAddedAddress(): void
     {
         $person = Person::fromString('José Freire', '79999338801');
-        $person->setAddress(Address::fromString('Rua Teste, 100, Bairro Teste,, Sao Paulo, SP, 01156060'));
+        $person->setAddress('Rua Teste, 100, Bairro Teste,, Sao Paulo, SP, 01156060');
 
         $this->assertNotEmpty($person->jsonSerialize()['address']);
         $this->assertSame('Rua Teste', $person->jsonSerialize()['address']['street']);

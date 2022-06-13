@@ -13,11 +13,11 @@
     },
     "authors": [
         {
-            "name": "Joao Hernandes",
-            "email": "jhernandes@isoftsolutions.com.br"
+            "name": "Joao Hernandes"
         }
     ],
     "require": {
+        "php": ">=7.4",
         "php-ds/php-ds": "^1.4",
         "jhernandes/contacts": "^1.0",
         "jhernandes/brazilian-address": "^1.0"
