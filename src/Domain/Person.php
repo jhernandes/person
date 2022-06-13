@@ -67,7 +67,7 @@ class Person implements \JsonSerializable
                 'mobilePhone' => (string) (isset($this->mobilePhone) ? $this->mobilePhone : ''),
                 'homePhone' => (string) (isset($this->homePhone) ? $this->homePhone : ''),
             ],
-            'address' => isset($this->address) ? $this->address->jsonSerialize() : [],
+            'address' => isset($this->address) ? $this->address->jsonSerialize() : null,
         ];
     }
 }
