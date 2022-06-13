@@ -7,20 +7,27 @@ namespace Jhernandes\Person\Domain;
 use Jhernandes\Person\Domain\Name;
 use Jhernandes\Contacts\Domain\Email;
 use Jhernandes\Contacts\Domain\Phone;
+use Jhernandes\BrazilianAddress\Domain\Address;
 
 class Person implements \JsonSerializable
 {
     private Name $name;
     private CPF $cpf;
+    private Date $birthdate;
     private Email $email;
     private Phone $mobilePhone;
     private Phone $homePhone;
-    // private Address $address;
+    private Address $address;
 
     public function __construct(string $name, string $cpf)
     {
         $this->name = Name::fromString($name);
         $this->cpf = CPF::fromString($cpf);
+    }
+
+    public function setBirthdate(string $birthdate): void
+    {
+        $this->birthdate = Date::fromString($birthdate);
     }
 
     public function setEmail(string $email): void
@@ -38,19 +45,23 @@ class Person implements \JsonSerializable
         $this->homePhone = Phone::fromString($homePhone);
     }
 
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
+    }
+
     public function jsonSerialize(): array
     {
         return [
             'name' => (string) $this->name,
             'cpf' => (string) $this->cpf,
-            'email' => (string) isset($this->email) ?: '',
+            'birthdate' => (string) (isset($this->birthdate) ? $this->birthdate : ''),
+            'email' => (string) (isset($this->email) ? $this->email : ''),
             'contacts' => [
-                'mobilePhone' => (string) isset($this->mobilePhone) ?: '',
-                'homePhone' => (string) isset($this->homePhone) ?: '',
+                'mobilePhone' => (string) (isset($this->mobilePhone) ? $this->mobilePhone : ''),
+                'homePhone' => (string) (isset($this->homePhone) ? $this->homePhone : ''),
             ],
-            // 'address' => [
-            //     'street' => $this->address->street ?? '',
-            // ]
+            'address' => isset($this->address) ? $this->address->jsonSerialize() : [],
         ];
     }
 }

@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffb4cc38d995cff2db6a947ef960a05a",
+    "content-hash": "dcf25331d0a58a5d19434ad0f91fe3df",
     "packages": [
+        {
+            "name": "jhernandes/brazilian-address",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jhernandes/brazilian-address.git",
+                "reference": "dc50e4d6fcd81f5d8f02e1bcadad6a17d79b6fc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jhernandes/brazilian-address/zipball/dc50e4d6fcd81f5d8f02e1bcadad6a17d79b6fc7",
+                "reference": "dc50e4d6fcd81f5d8f02e1bcadad6a17d79b6fc7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jhernandes\\BrazilianAddress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joao Hernandes",
+                    "email": "jhernandes@isoftsolutions.com.br"
+                }
+            ],
+            "description": "Brazilian Address Component",
+            "support": {
+                "issues": "https://github.com/jhernandes/brazilian-address/issues",
+                "source": "https://github.com/jhernandes/brazilian-address/tree/v1.0.2"
+            },
+            "time": "2022-06-13T14:49:39+00:00"
+        },
         {
             "name": "jhernandes/contacts",
             "version": "v1.0.0",
