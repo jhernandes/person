@@ -12,7 +12,7 @@ class Name
     public function __construct(string $firstname, string $lastname)
     {
         $this->ensureIsValidName($firstname);
-        $this->ensureIsValidName($lastname);
+        $this->ensureIsValidName($lastname, true);
 
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -29,15 +29,29 @@ class Name
 
     public function __toString(): string
     {
-        return "{$this->firstname} {$this->lastname}";
+        return "{$this->firstname()} {$this->lastname()}";
     }
 
-    public function ensureIsValidName(string $name): void
+    public function firstname(): string
+    {
+        return $this->firstname;
+    }
+
+    public function lastname(): string
+    {
+        return isset($this->lastname) ? $this->lastname : '';
+    }
+
+    private function ensureIsValidName(string $name, bool $canBeEmpty = false): void
     {
         foreach (explode(' ', $name) as $singlename) {
+            if (empty($singlename) && $canBeEmpty) {
+                continue;
+            }
+
             if (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/', $singlename)) {
-                throw new \InvalidArgumentException(
-                    sprintf('%s is not a valid name', $singlename)
+                throw new \UnexpectedValueException(
+                    sprintf('%s is not a valid name', $name)
                 );
             }
         }

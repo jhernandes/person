@@ -15,17 +15,30 @@ class NameTest extends TestCase
         );
     }
 
-    public function testCannotBeCreateWithOnlyFirstName(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-
-        Name::fromString('João');
-    }
-
     public function testCannotBeCreateWithInvalidCharacters(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         Name::fromString('Joa1o-+Teste/][');
+    }
+
+    public function testCanAccessFirstAndLastnames(): void
+    {
+        $name = Name::fromString('Josias Carlos Magno');
+
+        $this->assertSame(
+            ['Josias', 'Carlos Magno'],
+            [$name->firstname(), $name->lastname()]
+        );
+    }
+
+    public function testLastnameIsEmptyIfNotInitialized(): void
+    {
+        $name = Name::fromString('Josias');
+
+        $this->assertSame(
+            ['Josias', ''],
+            [$name->firstname(), $name->lastname()]
+        );
     }
 }

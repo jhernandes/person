@@ -17,14 +17,14 @@ class CpfTest extends TestCase
 
     public function testCannotBeCreateFromInvalidCpf(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         Cpf::fromString('111.111.111-11');
     }
 
     public function testCannotBeCreateWithInvalidCpfString(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         Cpf::fromString('asdqwe123asd12');
     }

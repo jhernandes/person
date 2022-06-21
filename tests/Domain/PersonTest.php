@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Jhernandes\Person;
-
-use Jhernandes\BrazilianAddress\Domain\Address;
 use PHPUnit\Framework\TestCase;
 use Jhernandes\Person\Domain\Person;
 
@@ -63,15 +60,15 @@ class PersonTest extends TestCase
 
     public function testCannotBeCreatedWithoutValidCpf(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         Person::fromString('José Freire', '');
     }
 
     public function testCannotBeCreatedWithoutValidName(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
-        Person::fromString('Jones', '79999338801');
+        Person::fromString('Jon&s', '79999338801');
     }
 }
